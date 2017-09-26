@@ -4,13 +4,15 @@ var Parliament = function(parties, startingPosGov, startingPosOO) {
   this.startingPosOO = startingPosOO;
   this.nextPosGov = startingPosGov;
   this.nextPosOO = startingPosOO;
-  console.log(this.parties)
+
+
   this.showParliament = function() {
     for (let i = 0; i < parties.length; i++) {
-      console.log(parties[i]);
       if (parties[i].partyType == "gov") {
-        console.log("true")
         this.nextPosGov = parties[i].show(this.nextPosGov);
+      }
+      if (parties[i].partyType == "oo") {
+        this.nextPosOO = parties[i].show(this.nextPosOO);
       }
     }
   }
