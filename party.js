@@ -16,12 +16,25 @@ var Party = function(name, members, c, pos, partyType, margin) {
     this.nexty = startPos.y
     noStroke();
     fill(this.c);
-    for (var i = 0; i < this.members; i++) {
-      ellipse(this.nextx, this.nexty, 20, 20)
-      this.nextx += offset;
-      if (this.nextx >= this.margin.end) {
-        this.nextx = this.margin.start;
-        this.nexty += offset;
+    if (this.partyType == "gov") {
+      for (var i = 0; i < this.members; i++) {
+        ellipse(this.nextx, this.nexty, 20, 20);
+        this.nextx += offset;
+        if (this.nextx >= this.margin.end) {
+          this.nextx = this.margin.start;
+          this.nexty += offset;
+        }
+      }
+    }
+    if ((this.partyType == "oo") || (this.partyType == "uo")) {
+      for (let i = 0; i < this.members; i++) {
+        console.log(this.nextx)
+        ellipse(this.nextx, this.nexty, 20, 20);
+        this.nextx -= offset;
+        if (this.nextx <= this.margin.end) {
+          this.nextx = this.margin.start;
+          this.nexty += offset;
+        }
       }
     }
     return (new Pos(this.nextx, this.nexty));
