@@ -20,7 +20,9 @@ var Party = function(name, members, c, pos, partyType, margin) {
       for (var i = 0; i < this.members; i++) {
         ellipse(this.nextx, this.nexty, 20, 20);
         this.nextx += offset;
+        console.log(this.nextx + ":" + this.margin.end)
         if (this.nextx >= this.margin.end) {
+          console.log("linebreak")
           this.nextx = this.margin.start;
           this.nexty += offset;
         }
@@ -28,10 +30,21 @@ var Party = function(name, members, c, pos, partyType, margin) {
     }
     if ((this.partyType == "oo") || (this.partyType == "uo")) {
       for (let i = 0; i < this.members; i++) {
-        console.log(this.nextx)
         ellipse(this.nextx, this.nexty, 20, 20);
         this.nextx -= offset;
         if (this.nextx <= this.margin.end) {
+          this.nextx = this.margin.start;
+          this.nexty += offset;
+        }
+      }
+    }
+    if (this.partyType == "cross") {
+      for (var i = 0; i < this.members; i++) {
+        ellipse(this.nextx, this.nexty, 20, 20);
+        this.nextx += offset;
+        console.log(this.nextx + ":" + this.margin.end)
+        if (this.nextx + 20 >= this.margin.end) {
+          console.log("linebreak")
           this.nextx = this.margin.start;
           this.nexty += offset;
         }

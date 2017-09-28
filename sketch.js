@@ -1,13 +1,15 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  govStartPos = new Pos(20, 20);
-  ooStartPos = new Pos(260, 20);
-  govMargin = new Margin(govStartPos.x, govStartPos.x + 80);
-  ooMargin = new Margin(ooStartPos.x, ooStartPos.x - 80);
+  let govStartPos = new Pos(20, 40);
+  let ooStartPos = new Pos(260, 40);
+  let govMargin = new Margin(govStartPos.x, govStartPos.x + 80);
+  let ooMargin = new Margin(ooStartPos.x, ooStartPos.x - 80);
+  let crossMargin = new Margin(govMargin.end, 220)
   var p = new Party("text", 19, "#ff0000", govStartPos, "gov", govMargin);
   var p2 = new Party("text", 19, "#3366ff", ooStartPos, "oo", ooMargin);
   let p3 = new Party("text", 19, "#009933", ooStartPos, "uo", ooMargin);
-  let party_list = [p, p2, p3];
+  let p4 = new Party("text", 19, "#808080", ooStartPos, "cross", crossMargin);
+  party_list = [p, p2, p3, p4];
   let parl = new Parliament(party_list, govStartPos, ooStartPos);
   parl.showParliament();
 }
