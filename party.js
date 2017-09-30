@@ -1,20 +1,23 @@
 var offset = 25;
 
 
-var Party = function(name, members, c, pos, partyType, margin) {
+var Party = function(name, members, c, partyType, margin, st) {
   this.name = name;
   this.members = members;
-  this.color = color;
-  this.startx = pos.x;
-  this.starty = pos.y;
   this.margin = margin;
   this.c = color(c);
   this.partyType = partyType;
+  this.stroke = st;
 
   this.show = function(startPos) {
     this.nextx = startPos.x
     this.nexty = startPos.y
-    noStroke();
+    if (this.stroke) {
+      strokeWeight(2);
+      stroke(this.stroke)
+    } else {
+      noStroke();
+    }
     fill(this.c);
     if (this.partyType == "gov") {
       for (var i = 0; i < this.members; i++) {
@@ -43,7 +46,7 @@ var Party = function(name, members, c, pos, partyType, margin) {
         ellipse(this.nextx, this.nexty, 20, 20);
         this.nextx += offset;
         console.log(this.nextx + ":" + this.margin.end)
-        if (this.nextx + 20 >= this.margin.end) {
+        if (this.nextx >= this.margin.end) {
           console.log("linebreak")
           this.nextx = this.margin.start;
           this.nexty += offset;
@@ -52,5 +55,6 @@ var Party = function(name, members, c, pos, partyType, margin) {
     }
     return (new Pos(this.nextx, this.nexty));
   }
+
 
 }
