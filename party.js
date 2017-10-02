@@ -13,7 +13,7 @@ var Party = function(name, members, c, partyType, margin, st) {
     this.nextx = startPos.x
     this.nexty = startPos.y
     if (this.stroke) {
-      strokeWeight(2);
+      strokeWeight(1);
       stroke(this.stroke)
     } else {
       noStroke();

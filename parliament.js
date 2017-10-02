@@ -32,7 +32,7 @@ var Parliament = function(parties, startingPosGov, startingPosOO) {
         this.nextPosUO = this.uoParties[i].show(this.nextPosUO);
       }
       this.nextPosCross = new Pos(this.crossMargin.start, this.nextPosUO.y +
-        50);
+        5);
     } catch (TypeError) {
       console.log("No UO Parties")
     }
